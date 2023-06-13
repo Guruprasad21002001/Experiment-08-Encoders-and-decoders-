@@ -1,43 +1,61 @@
-# Experiment 08: Encoders and decoders 
+# Experiment-08- Encoders-and-decoders...
+
 ### AIM: 
-To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
-### HARDWARE REQUIRED:  
-PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:  
-Quartus prime
-### THEORY 
-## Encoders
+
+To implement 8 to 3 Encoder and 3 to 8 Decoder using verilog and validate its outputs.
+
+### HARDWARE REQUIRED:
+
+PC, Cyclone II ,
+
+USB flasher.
+
+### SOFTWARE REQUIRED:
+
+Quartus prime.
+
+### THEORY: 
+
+## Encoders:
+
 Binary code of N digits can be used to store 2N distinct elements of coded information. This is what encoders and decoders are used for. Encoders convert 2N lines of input into a code of N bits and Decoders decode the N bits into 2N lines.
 
-1. Encoders –
+### Encoders :
+
 An encoder is a combinational circuit that converts binary information in the form of a 2N input lines into N output lines, which represent N bit code for the input. For simple encoders, it is assumed that only one input line is active at a time.
 
 As an example, let’s consider Octal to Binary encoder. As shown in the following figure, an octal-to-binary encoder takes 8 input lines and generates 3 output lines.
 
-## Figure -01 3 to 8 Encoder 
+## Figure -01: (3 to 8 Encoder): 
+
 ![image](https://user-images.githubusercontent.com/36288975/171543588-bc0746df-a173-4b35-989e-5fb7d385fe8a.png)
- 
 
-
-Implementation –
+Implementation :
 
 X = D4 + D5 + D6 + D7
 Y = D2 +D3 + D6 + D7
 Z = D1 + D3 + D5 + D7 
+
 Hence, the encoder can be realised with OR gates as follows:
 
-## Figure -02 3 to 8 Encoder implenentation 
+## Figure -02: (3 to 8 Encoder implementation):
+
 ![image](https://user-images.githubusercontent.com/36288975/171543740-68403b82-aa93-4c98-9343-f32b14885a2e.png)
 
+### Decoders:
 
-### Decoders 
 A decoder does the opposite job of an encoder. It is a combinational circuit that converts n lines of input into 2n lines of output.
 
 Let’s take an example of 3-to-8 line decoder.
-Implementation –
-D0 is high when X = 0, Y = 0 and Z = 0. Hence,
 
-D0 = X’ Y’ Z’ 
+Implementation :
+
+D0 is high when X = 0, Y = 0 and Z = 0.
+
+Hence,
+
+D0 = X’ Y’ Z’
+
 Similarly,
 
 D1 = X’ Y’ Z
@@ -48,30 +66,54 @@ D5 = X Y’ Z
 D6 = X Y Z’
 D7 = X Y Z 
 
-## Figure -03 8 to 3 Decoder 
+## Figure -03: (8 to 3 Decoder): 
+
 ![image](https://user-images.githubusercontent.com/36288975/171543978-ee2d0671-2846-40a1-8705-507fd6287a49.png)
 
-## Figure -04 8 to 3 Decoder implementation 
+## Figure -04: (8 to 3 Decoder immplementation):
+
 ![image](https://user-images.githubusercontent.com/36288975/171543866-5a6eace6-8683-49d7-9c4f-a7cb30ec3035.png)
 
+### Procedure:
 
-### Procedure
-1. Create a project with required entities.
-2. Create a module along with respective file name for both Multiplexer and De-multiplexer.
-3. Run the module and get the respective RTL outputs.
-4. Create university program(VWF) for getting timing diagram.
-5. Give the respective inputs for timing diagram and obtain the results.
+#### Step 1:
 
-### PROGRAM 
-```
-Program for encoder and decoder and verify its truth table in quartus using Verilog programming.
-Developed by: Guru Prasad.B
-RegisterNumber: 212221230032
-```
+Open Quartus II and select new project and choose the file location.
 
-## Program for Encoder
-```
+#### Step 2:
+
+Module Declaration. Module should have the file name.
+
+#### Step 3:
+
+Input-Output Delecaration.
+
+#### Step 4:
+
+Use assign to define the functionality of logic circuits.
+
+#### Step 5:
+
+At the end give endmodule.
+
+#### Step 6:
+
+Run the program and choose RTL viewer to get RTL realization.
+
+### PROGRAM:
+
 verilog
+
+Program for Encoders and Decoders and verify its truth table in quartus using Verilog programming.
+Developed by: Anto Richard. S
+RegisterNumber:  212221240005
+
+
+
+verilog
+
+# ENCODER:
+```
 module encoder(a,b,c,d0,d1,d2,d3,d4,d5,d6,d7);
 output a,b,c;
 input d0,d1,d2,d3,d4,d5,d6,d7;
@@ -80,9 +122,12 @@ or(b,d2,d3,d6,d7);
 or(c,d1,d3,d5,d7);
 endmodule
 ```
-## Program for Decoder
-```
+
+
 verilog
+
+# DECODER:
+```
 module decoder(d0,d1,d2,d3,d4,d5,d6,d7,a,b,c);
 output d0,d1,d2,d3,d4,d5,d6,d7;
 input a,b,c;
@@ -95,34 +140,39 @@ assign d5=(a&~b&c);
 assign d6=(a&b&~c);
 assign d7=(a&b&c);
 endmodule
+
+
 ```
+### RTL LOGIC:  
 
-### RTL LOGIC 
+#### Encoder rtl:
 
-#### Encoder
+![8 1](https://github.com/anto-richard/Experiment-08-Encoders-and-decoders-/assets/93427534/3cf915b0-05d2-415a-be14-d223bc5dcca3)
 
-![Screenshot 2023-06-07 134857](https://github.com/Prajeeth17/Experiment-08-Encoders-and-decoders-/assets/120513885/3991bd6b-c01d-4a15-84b0-252bd01cf14b)
+#### Decoder rtl:
 
-#### Decoder
-![Screenshot 2023-06-07 141248](https://github.com/Prajeeth17/Experiment-08-Encoders-and-decoders-/assets/120513885/821536cf-c731-4024-b563-6a08e312e8c0)
+![8 2](https://github.com/anto-richard/Experiment-08-Encoders-and-decoders-/assets/93427534/a2473e98-3ec3-4f9f-84ef-aed31696ff0f)
 
-### TIMING DIGRAM
+### TIMING DIGRAMS:  
 
-#### Encoder
+#### Encoder waveform:
 
-![en](https://github.com/Prajeeth17/Experiment-08-Encoders-and-decoders-/assets/120513885/3bac2139-a1d7-4ef4-8610-0e7b28f39ea4)
+![8 3](https://github.com/anto-richard/Experiment-08-Encoders-and-decoders-/assets/93427534/25453685-cc73-4274-ae63-6e0b3aacd49c)
 
-#### Decoder
+#### Decoder waveform:
 
-![de](https://github.com/Prajeeth17/Experiment-08-Encoders-and-decoders-/assets/120513885/b86a6952-fffa-4cf9-9ae0-cb994ec0ad13)
+![8 4](https://github.com/anto-richard/Experiment-08-Encoders-and-decoders-/assets/93427534/ddb5af68-1ae3-418f-aba1-722625ccc6c1)
 
-### TRUTH TABLE 
+### TRUTH TABLE: 
 
-#### Encoder
-![entttt](https://github.com/Prajeeth17/Experiment-08-Encoders-and-decoders-/assets/120513885/3eaa806b-e7a8-4a1b-a9a0-24c35703acf5)
+#### Encoder truth table:
 
-#### Decoder
-![entt](https://github.com/Prajeeth17/Experiment-08-Encoders-and-decoders-/assets/120513885/ee1cb190-4215-4331-82f0-582457e13b91)
+![8 5](https://github.com/anto-richard/Experiment-08-Encoders-and-decoders-/assets/93427534/bd2c4e9f-ce4d-4bb6-bb73-8907c0f458db)
 
-### RESULT
-Thus the program to desing encoder and decoder is done.
+#### Decoder truth table:
+
+![8 6](https://github.com/anto-richard/Experiment-08-Encoders-and-decoders-/assets/93427534/f9bc5499-5f69-45b8-9655-0f92d377fd52)
+
+### RESULTS:
+
+Thus the program to implement 8 to 3 Encoder and 3 to 8 Decoder using verilog is done and its outputs are validated.
